@@ -36,6 +36,7 @@ public class TestBot extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
+        RobotMap.init();
     }
 
     public void autonomousInit() {
