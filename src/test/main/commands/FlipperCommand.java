@@ -14,22 +14,20 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FlipperCommand extends Command {
 
-    private boolean flipperState = false;
-    
     public FlipperCommand() {
         requires(CommandBase.flippers);
     }
     
     protected void initialize() {
-        CommandBase.flippers.resetFlippers();
     }
 
     protected void execute() {
-        
+        CommandBase.flippers.flippersSwitch();
+
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     protected void end() {

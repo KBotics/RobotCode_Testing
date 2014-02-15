@@ -13,29 +13,34 @@ import edu.wpi.first.wpilibj.Talon;
  * floating around.
  */
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static final int leftMotor = 1;
-    // public static final int rightMotor = 2;
-    
-    private static final int catapult_leftMotor  = 6;
-    private static final int catapult_rightMotor = 2;
-    
-    public static SpeedController leftCatapult;
-    public static SpeedController rightCatapult;
-    
-    public static DoubleSolenoid leftFlipper, rightFlipper;
-    
+    private static final int PETER_PORT_1 = 1;
+    private static final int PETER_PORT_2 = 2;
+    private static final int LFLIP_PORT_1 = 1;
+    private static final int LFLIP_PORT_2 = 2;
+    private static final int RFLIP_PORT_1 = 3;
+    private static final int RFLIP_PORT_2 = 4;
+    private static final int RBRAKE_PORT_1 = 5;
+    private static final int RBRAKE_PORT_2 = 6;
+    private static final int LBRAKE_PORT_1 = 3;
+    private static final int LBRAKE_PORT_2 = 4;
+    public static DoubleSolenoid rightFlipper, leftFlipper, peter, leftBrake, rightBrake;
    // public static Compressor airCompressor;
     
     public static void init() {
-        
-       // airCompressor = new Compressor(1, 1);
+      
+      // airCompressor = new Compressor(1, 1);
       //  airCompressor.start();
-        leftFlipper = new DoubleSolenoid(1, 2);
+        rightFlipper = new DoubleSolenoid(1, RFLIP_PORT_1, RFLIP_PORT_2);
+        leftFlipper  = new DoubleSolenoid(1, LFLIP_PORT_1, LFLIP_PORT_2);
+        peter        = new DoubleSolenoid(2, PETER_PORT_1, PETER_PORT_2);
+        leftBrake    = new DoubleSolenoid(2, LBRAKE_PORT_1, LBRAKE_PORT_2);
+        rightBrake   = new DoubleSolenoid(2, RBRAKE_PORT_1, RBRAKE_PORT_2);
         
-        leftCatapult  = new Talon(catapult_leftMotor);
-        rightCatapult = new Talon(catapult_rightMotor);
+        rightFlipper.set(DoubleSolenoid.Value.kOff);
+        leftFlipper.set(DoubleSolenoid.Value.kOff);
+        peter.set(DoubleSolenoid.Value.kOff);
+        leftBrake.set(DoubleSolenoid.Value.kOff);
+        rightBrake.set(DoubleSolenoid.Value.kOff);
     }
     
     // If you are using multiple modules, make sure to define both the port

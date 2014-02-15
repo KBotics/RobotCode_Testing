@@ -1,6 +1,9 @@
 
 package test.main;
 
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import test.main.commands.FlipperCommand;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -13,8 +16,15 @@ public class OI {
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
     
-    public XboxController Xbox = new XboxController(1);
+    public XboxController Xbox;
+    public JoystickButton button;
     
+    public OI()
+    {
+        Xbox = new XboxController(1);
+        button = new JoystickButton(Xbox.m_joy, Xbox.XBOX_A);
+        button.whenPressed(new FlipperCommand());
+    }
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if
     // you want to build a customized operator interface.

@@ -16,25 +16,36 @@ import test.main.commands.FlipperCommand;
  * @author KBotics
  */
 public class Flippers extends Subsystem{
-
+    DoubleSolenoid rightFlipper = RobotMap.rightFlipper;
+    DoubleSolenoid leftFlipper = RobotMap.leftFlipper;
+    DoubleSolenoid peter = RobotMap.peter;
+    DoubleSolenoid leftBrake = RobotMap.leftBrake;
+    DoubleSolenoid rightBrake = RobotMap.rightBrake;
+    boolean state = true;
+    
     protected void initDefaultCommand() {
-        setDefaultCommand(new FlipperCommand());
+        //setDefaultCommand(new FlipperCommand());
     }
     
-    public void resetFlippers() {
-        RobotMap.leftFlipper.set(DoubleSolenoid.Value.kReverse);
-        //RobotMap.rightFlipper.set(false);
-    }
-    
-    public void flippersSwitch(boolean state) {
-        if (state) {
+    public void flippersSwitch() 
+    {
+        if(state)
+        {
             state = false;
-            RobotMap.rightFlipper.set(DoubleSolenoid.Value.kReverse);
-            RobotMap.leftFlipper.set(DoubleSolenoid.Value.kReverse);
-        } else {
+            rightFlipper.set(DoubleSolenoid.Value.kReverse);
+            leftFlipper.set(DoubleSolenoid.Value.kReverse);
+            peter.set(DoubleSolenoid.Value.kReverse);
+            leftBrake.set(DoubleSolenoid.Value.kReverse);
+            rightBrake.set(DoubleSolenoid.Value.kReverse);
+        }
+        else
+        {
             state = true;
-            RobotMap.rightFlipper.set(DoubleSolenoid.Value.kForward);
-            RobotMap.leftFlipper.set(DoubleSolenoid.Value.kForward);
+            rightFlipper.set(DoubleSolenoid.Value.kForward);
+            leftFlipper.set(DoubleSolenoid.Value.kForward);
+            peter.set(DoubleSolenoid.Value.kForward);
+            leftBrake.set(DoubleSolenoid.Value.kForward);
+            rightBrake.set(DoubleSolenoid.Value.kForward);
         }
     }
 }
