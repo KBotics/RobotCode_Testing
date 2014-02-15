@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import test.main.OI;
 import test.main.subsystems.Catapult;
 import test.main.subsystems.ExampleSubsystem;
+import test.main.subsystems.Flippers;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -18,6 +19,7 @@ public abstract class CommandBase extends Command {
     // Create a single static instance of all of your subsystems
     public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static Catapult catapult = new Catapult();
+    public static Flippers flippers = new Flippers();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

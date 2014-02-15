@@ -1,6 +1,8 @@
 package test.main;
 
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -22,9 +24,16 @@ public class RobotMap {
     public static SpeedController leftCatapult;
     public static SpeedController rightCatapult;
     
+    public static DoubleSolenoid leftFlipper, rightFlipper;
     
+   // public static Compressor airCompressor;
     
     public static void init() {
+        
+       // airCompressor = new Compressor(1, 1);
+      //  airCompressor.start();
+        leftFlipper = new DoubleSolenoid(1, 2);
+        
         leftCatapult  = new Talon(catapult_leftMotor);
         rightCatapult = new Talon(catapult_rightMotor);
     }
